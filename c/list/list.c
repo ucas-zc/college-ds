@@ -3,6 +3,12 @@
 // 头插法建立单链表(带头结点)
 int head_insert(LNode *table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     int data;
     scanf("%d", &data);
     while (data != 9999)
@@ -22,8 +28,15 @@ int head_insert(LNode *table)
     return L_OK;
 }
 
+// 尾插法
 int tail_insert(LNode *table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     int data;
     scanf("%d", &data);
     LNode *pTail = table;
@@ -44,8 +57,15 @@ int tail_insert(LNode *table)
     return L_OK;
 }
 
+// 中间插入结点
 int insert_data(LNode *table, int data, int pos_data)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     LNode *pNode = NULL;
     pNode = table->next;
     while (pNode != NULL)
@@ -73,6 +93,12 @@ int insert_data(LNode *table, int data, int pos_data)
 // 删除某个结点
 int delete_data(LNode *table, int data)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     LNode *pPrev = table;
     LNode *pNode = table->next;
     while (pNode != NULL)
@@ -101,6 +127,12 @@ int delete_data(LNode *table, int data)
 // 查找结点
 LNode *find_node(LNode *table, int data)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     LNode *pNode = table->next;
     while (pNode != NULL)
     {
@@ -118,6 +150,12 @@ LNode *find_node(LNode *table, int data)
 // 遍历链表
 int display_list(LNode *table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     printf("----------display----------\n");
     LNode *pNode = NULL;
     pNode = table->next;
@@ -133,6 +171,12 @@ int display_list(LNode *table)
 // 销毁链表
 int destroy_list(LNode *table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     LNode *pNode = table->next;
     while (pNode != NULL)
     {
@@ -153,6 +197,12 @@ int destroy_list(LNode *table)
 // 计算表长
 int get_len(LNode *table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     int len = 0;
     LNode *pNode = table->next;
     while (pNode != NULL)
@@ -168,6 +218,12 @@ int get_len(LNode *table)
 // 头插法建立单链表(带头结点)
 int nhead_insert(LNode **table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     int data;
     scanf("%d", &data);
     if (data == 9999)
@@ -203,6 +259,12 @@ int nhead_insert(LNode **table)
 // 头插法建立单链表(带头结点)
 int ntail_insert(LNode **table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     int data;
     scanf("%d", &data);
     if (data == 9999)
@@ -240,6 +302,12 @@ int ntail_insert(LNode **table)
 // 不带头结点插入数据
 int ninsert_data(LNode **table, int data, int pos_data)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     LNode *pNode = NULL;
     pNode = *table;
     while (pNode != NULL)
@@ -267,6 +335,12 @@ int ninsert_data(LNode **table, int data, int pos_data)
 // 删除某个结点
 int ndelete_data(LNode **table, int data)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     LNode *pPrev = NULL;
     LNode *pNode = *table;
     while (pNode != NULL)
@@ -302,6 +376,12 @@ int ndelete_data(LNode **table, int data)
 // 查找结点
 LNode *nfind_node(LNode **table, int data)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     LNode *pNode = *table;
     while (pNode != NULL)
     {
@@ -319,6 +399,12 @@ LNode *nfind_node(LNode **table, int data)
 // 遍历链表
 int ndisplay_list(LNode **table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     printf("----------ndisplay----------\n");
     LNode *pNode = NULL;
     pNode = *table;
@@ -334,6 +420,12 @@ int ndisplay_list(LNode **table)
 // 销毁链表
 int ndestroy_list(LNode **table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     LNode *pNode = *table;
     while (pNode != NULL)
     {
@@ -354,6 +446,12 @@ int ndestroy_list(LNode **table)
 // 计算表长
 int nget_len(LNode **table)
 {
+    // 异常判断
+    if (table == NULL)
+    {
+        return L_FAIL;
+    }
+
     int len = 0;
     LNode *pNode = *table;
     while (pNode != NULL)

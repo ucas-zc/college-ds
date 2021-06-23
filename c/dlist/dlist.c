@@ -80,7 +80,8 @@ int insert_data(DLNode *table, int data, int pos_data)
 
             pCur->data = data;
             pCur->next = pNode->next;
-            pNode->next->prev = pCur;
+            if (pNode->next != NULL)
+                pNode->next->prev = pCur;
             pCur->prev = pNode;
             pNode->next = pCur;
 
@@ -135,7 +136,8 @@ int delete_node(DLNode *table, int data)
             // 将要删除结点取下来
             DLNode *pPrev = pNode;
             pNode->prev->next = pNode->next;
-            pNode->next->prev = pNode->prev;
+            if (pNode->next != NULL)
+                pNode->next->prev = pNode->prev;
             
             // 释放内存，删除
             if (pPrev != NULL)
