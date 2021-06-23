@@ -215,7 +215,7 @@ int get_len(LNode *table)
     return len;
 }
 
-// 头插法建立单链表(带头结点)
+// 头插法建立单链表(不带头结点)
 int nhead_insert(LNode **table)
 {
     // 异常判断
@@ -256,7 +256,7 @@ int nhead_insert(LNode **table)
     return L_OK;
 }
 
-// 头插法建立单链表(带头结点)
+// 尾插法建立单链表(不带头结点)
 int ntail_insert(LNode **table)
 {
     // 异常判断
