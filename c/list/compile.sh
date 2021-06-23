@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -g main.c list.c -o list
+gcc -g -D$1 main.c list.c list_operate.c -o list

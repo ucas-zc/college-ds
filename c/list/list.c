@@ -319,7 +319,7 @@ LNode *nfind_node(LNode **table, int data)
 // 遍历链表
 int ndisplay_list(LNode **table)
 {
-    printf("----------display----------\n");
+    printf("----------ndisplay----------\n");
     LNode *pNode = NULL;
     pNode = *table;
     while (pNode != NULL)

@@ -1,14 +1,17 @@
 #include "list.h"
+#include "list_operate.h"
 
 int main()
 {
+#ifdef _LIST_
+
     // 单向链表（不带头结点）测试
     LNode table;
     table.data = 0;
     table.next = NULL;
 
-    head_insert(&table);
-    //tail_insert(&table);
+    //head_insert(&table);
+    tail_insert(&table);
     printf("len = %d\n", get_len(&table));
 
     display_list(&table);
@@ -30,7 +33,9 @@ int main()
     display_list(&table);
     printf("len = %d\n", get_len(&table));
 
-    // 单链表测试（带头结点）
+#elif _NLIST_
+
+    // 单链表测试（不带头结点）
     LNode *tl;
     //nhead_insert(&tl);
     ntail_insert(&tl);
@@ -51,6 +56,29 @@ int main()
     ndestroy_list(&tl);
     ndisplay_list(&tl);
     printf("len = %d\n", nget_len(&tl));
+
+#elif _OPERATE_
+
+    LNode table;
+    table.data = 0;
+    table.next = NULL;
+
+    tail_insert(&table);
+    display_list(&table);
+
+    printf("cycle=%d\n", is_cycle(&table));
+   
+    reverse_list(&table);
+    display_list(&table);
+
+    delete_tail(&table, 3);
+    display_list(&table);
+
+    LNode *pMid = find_mid(&table);
+    if (pMid != NULL)
+        printf("mid=%d\n", pMid->data);
+
+#endif
 
     return 0;
 }
