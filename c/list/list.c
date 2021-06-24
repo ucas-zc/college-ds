@@ -1,10 +1,10 @@
 #include "list.h"
 
 // 头插法建立单链表(带头结点)
-int head_insert(LNode *table)
+int head_insert(LNode *head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
@@ -19,8 +19,8 @@ int head_insert(LNode *table)
         }
 
         pNode->data = data;
-        pNode->next = table->next;
-        table->next = pNode;
+        pNode->next = head->next;
+        head->next = pNode;
 
         scanf("%d", &data);
     }
@@ -29,17 +29,17 @@ int head_insert(LNode *table)
 }
 
 // 尾插法
-int tail_insert(LNode *table)
+int tail_insert(LNode *head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
     int data;
     scanf("%d", &data);
-    LNode *pTail = table;
+    LNode *pTail = head;
     while (data != 9999)
     {
         LNode *pNode = (LNode*)malloc(sizeof(LNode));
@@ -58,16 +58,16 @@ int tail_insert(LNode *table)
 }
 
 // 中间插入结点
-int insert_data(LNode *table, int data, int pos_data)
+int insert_data(LNode *head, int data, int pos_data)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
     LNode *pNode = NULL;
-    pNode = table->next;
+    pNode = head->next;
     while (pNode != NULL)
     {
         if (pNode->data == pos_data)
@@ -91,16 +91,16 @@ int insert_data(LNode *table, int data, int pos_data)
 }
 
 // 删除某个结点
-int delete_data(LNode *table, int data)
+int delete_data(LNode *head, int data)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
-    LNode *pPrev = table;
-    LNode *pNode = table->next;
+    LNode *pPrev = head;
+    LNode *pNode = head->next;
     while (pNode != NULL)
     {
         if (pNode->data == data)
@@ -125,15 +125,15 @@ int delete_data(LNode *table, int data)
 }
 
 // 查找结点
-LNode *find_node(LNode *table, int data)
+LNode *find_node(LNode *head, int data)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
-        return L_FAIL;
+        return NULL;
     }
 
-    LNode *pNode = table->next;
+    LNode *pNode = head->next;
     while (pNode != NULL)
     {
         if (pNode->data == data)
@@ -148,17 +148,17 @@ LNode *find_node(LNode *table, int data)
 }
 
 // 遍历链表
-int display_list(LNode *table)
+int display_list(LNode *head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
     printf("----------display----------\n");
     LNode *pNode = NULL;
-    pNode = table->next;
+    pNode = head->next;
     while (pNode != NULL)
     {
         printf("%d\n", pNode->data);
@@ -169,15 +169,15 @@ int display_list(LNode *table)
 }
 
 // 销毁链表
-int destroy_list(LNode *table)
+int destroy_list(LNode *head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
-    LNode *pNode = table->next;
+    LNode *pNode = head->next;
     while (pNode != NULL)
     {
         LNode *pCur = pNode;
@@ -190,21 +190,21 @@ int destroy_list(LNode *table)
         }
     }
 
-    table->next = NULL;
+    head->next = NULL;
     return L_OK;
 }
 
 // 计算表长
-int get_len(LNode *table)
+int get_len(LNode *head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
     int len = 0;
-    LNode *pNode = table->next;
+    LNode *pNode = head->next;
     while (pNode != NULL)
     {
         ++len;
@@ -216,10 +216,10 @@ int get_len(LNode *table)
 }
 
 // 头插法建立单链表(不带头结点)
-int nhead_insert(LNode **table)
+int nhead_insert(LNode **head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
@@ -231,9 +231,9 @@ int nhead_insert(LNode **table)
         return L_OK;
     }
 
-    *table = (LNode *)malloc(sizeof(LNode));
-    (*table)->data = data;
-    (*table)->next = NULL;
+    *head = (LNode *)malloc(sizeof(LNode));
+    (*head)->data = data;
+    (*head)->next = NULL;
 
     while (1) 
     {
@@ -249,18 +249,18 @@ int nhead_insert(LNode **table)
         }
 
         pNode->data = data;
-        pNode->next = *table;
-        *table = pNode;
+        pNode->next = *head;
+        *head = pNode;
     }
 
     return L_OK;
 }
 
 // 尾插法建立单链表(不带头结点)
-int ntail_insert(LNode **table)
+int ntail_insert(LNode **head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
@@ -272,11 +272,11 @@ int ntail_insert(LNode **table)
         return L_OK;
     }
 
-    *table = (LNode *)malloc(sizeof(LNode));
-    (*table)->data = data;
-    (*table)->next = NULL;
+    *head = (LNode *)malloc(sizeof(LNode));
+    (*head)->data = data;
+    (*head)->next = NULL;
 
-    LNode *pTail = *table;
+    LNode *pTail = *head;
 
     while (1) 
     {
@@ -300,16 +300,16 @@ int ntail_insert(LNode **table)
 }
 
 // 不带头结点插入数据
-int ninsert_data(LNode **table, int data, int pos_data)
+int ninsert_data(LNode **head, int data, int pos_data)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
     LNode *pNode = NULL;
-    pNode = *table;
+    pNode = *head;
     while (pNode != NULL)
     {
         if (pNode->data == pos_data)
@@ -333,16 +333,16 @@ int ninsert_data(LNode **table, int data, int pos_data)
 }
 
 // 删除某个结点
-int ndelete_data(LNode **table, int data)
+int ndelete_data(LNode **head, int data)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
     LNode *pPrev = NULL;
-    LNode *pNode = *table;
+    LNode *pNode = *head;
     while (pNode != NULL)
     {
         if (pNode->data == data)
@@ -350,7 +350,7 @@ int ndelete_data(LNode **table, int data)
             LNode *p = pNode;
             if (pPrev == NULL)
             {
-                *table = pNode->next;
+                *head = pNode->next;
             }
             else
             {
@@ -374,15 +374,15 @@ int ndelete_data(LNode **table, int data)
 }
 
 // 查找结点
-LNode *nfind_node(LNode **table, int data)
+LNode *nfind_node(LNode **head, int data)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
-        return L_FAIL;
+        return NULL;
     }
 
-    LNode *pNode = *table;
+    LNode *pNode = *head;
     while (pNode != NULL)
     {
         if (pNode->data == data)
@@ -397,17 +397,17 @@ LNode *nfind_node(LNode **table, int data)
 }
 
 // 遍历链表
-int ndisplay_list(LNode **table)
+int ndisplay_list(LNode **head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
     printf("----------ndisplay----------\n");
     LNode *pNode = NULL;
-    pNode = *table;
+    pNode = *head;
     while (pNode != NULL)
     {
         printf("%d\n", pNode->data);
@@ -418,15 +418,15 @@ int ndisplay_list(LNode **table)
 }
 
 // 销毁链表
-int ndestroy_list(LNode **table)
+int ndestroy_list(LNode **head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
-    LNode *pNode = *table;
+    LNode *pNode = *head;
     while (pNode != NULL)
     {
         LNode *pCur = pNode;
@@ -439,21 +439,21 @@ int ndestroy_list(LNode **table)
         }
     }
 
-    *table = NULL;
+    *head = NULL;
     return L_OK;
 }
 
 // 计算表长
-int nget_len(LNode **table)
+int nget_len(LNode **head)
 {
     // 异常判断
-    if (table == NULL)
+    if (head == NULL)
     {
         return L_FAIL;
     }
 
     int len = 0;
-    LNode *pNode = *table;
+    LNode *pNode = *head;
     while (pNode != NULL)
     {
         ++len;
