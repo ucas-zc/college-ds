@@ -5,7 +5,7 @@
 
 #define Q_OK 0
 #define Q_FAIL -1
-#define MAX_SIZE 5
+#define MAX_SIZE 128
 
 // 队列顺序存储结构体定义
 typedef struct Cycle_Queue
