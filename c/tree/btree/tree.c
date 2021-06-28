@@ -77,7 +77,6 @@ int post_order(TNode *root)
 
 }
 
-
 // 初始化队列
 int init_queue(CyQueue *queue)
 {
@@ -103,7 +102,6 @@ int is_empty(CyQueue *queue)
 
     return queue->front == queue->rear ? Q_OK : Q_FAIL;
 }
-
 
 // 队列判满
 int is_full(CyQueue *queue)
@@ -164,21 +162,22 @@ int level_order(TNode *root)
     CyQueue queue;
     init_queue(&queue);
 
+    // 根结点入队
     push_queue(&queue, root);
-    // 根结点数据先入队
+
     while (Q_OK != is_empty(&queue))
     {
         TNode *temp;
         pop_queue(&queue, &temp);
         visit(temp);
         
-        // 左结点数据入队
+        // 左结点入队
         if (temp->left != NULL)
         {
             push_queue(&queue, temp->left);
         }
 
-        // 右结点数据入队
+        // 右结点入队
         if (temp->right != NULL)
         {
             push_queue(&queue, temp->right);
