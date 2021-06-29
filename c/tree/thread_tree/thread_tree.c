@@ -1,7 +1,9 @@
 #include "thread_tree.h"
 
-// 线索二叉树前向结点
-TNode *pre = NULL;
+// 中序线索二叉树前向结点
+TNode *in_prev = NULL;
+// 前序线索二叉树前向结点
+TNode *pre_prev = NULL;
 
 // 构建树
 TNode *build()
@@ -27,6 +29,14 @@ TNode *build()
     return pNode;
 }
 
+// 前序构建线索二叉树
+void pre_thread(TNode **root)
+{
+    if (root != NULL && *root != NULL)
+    {
+    }
+}
+
 // 构建中序遍历二叉树
 void in_thread(TNode **root)
 {
@@ -39,19 +49,19 @@ void in_thread(TNode **root)
         // 左子树为空，使其指向直接前驱
         if ((*root)->left == NULL)
         {
-            (*root)->left = pre;
+            (*root)->left = in_prev;
             (*root)->lflag = 1;
         }
 
         // 直接前驱不为空，且其右结点为空
         // 使其右指针指向当前结点为其直接后继
-        if (pre != NULL && pre->right == NULL)
+        if (in_prev != NULL && in_prev->right == NULL)
         {
-            pre->right = *root;
-            pre->rflag = 1;
+            in_prev->right = *root;
+            in_prev->rflag = 1;
         }
 
-        pre = *root;
+        in_prev = *root;
         // 右子树线索化
         in_thread(&((*root)->right));
     }

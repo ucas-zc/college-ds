@@ -17,9 +17,11 @@ typedef struct TNode
     struct TNode *right;         // 指针域，指向右结点或者直接后继
 }TNode;
 
-
 // 构建树
 TNode *build();
+
+// 构建前序线索二叉树
+void pre_thread(TNode **root);
 
 // 构建中序线索二叉树
 void in_thread(TNode **root);
