@@ -34,4 +34,13 @@ int rbtree_insert(RbTree **root, RbTree *node);
 // 修正红黑树
 static int rbtree_insert_fixup(RbTree **root, RbTree *node);
 
+// 红黑树查找
+RbTree *rbtree_search(RbTree *root, int key);
+
+// 红黑树结点删除
+int rbtree_delete(RbTree **root, RbTree *node);
+
+// 删除结点后修正
+int rbtree_delete_fixup(RbTree **root, RbTree *child, RbTree *parent);
+
 #endif

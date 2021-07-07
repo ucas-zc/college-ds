@@ -16,13 +16,21 @@ int main()
         node->key = key;
         node->color = RED;
 
+        printf("%d:%p\n", key, node);
+
         // 插入结点
         rbtree_insert(&root, node);
 
         scanf("%d", &key);
     }
 
-    pre_order(root);
+    RbTree *pNode = rbtree_search(root, 3);
+    printf("search: %p\n", pNode);
+
+    rbtree_delete(&root, pNode);
+
+    pNode = rbtree_search(root, 3);
+    printf("search: %p\n", pNode);
 
     return T_OK;
 }
